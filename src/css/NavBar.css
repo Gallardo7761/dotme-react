@@ -1,55 +1,13 @@
-/* Estilos generales para la navbar */
-.navbar {
-    transition: background-color 0.3s ease, color 0.3s ease;
-    font-size: large;
-}
-
-/* Modo oscuro */
-.navbar.dark {
-    background-color: #333 !important;
-    color: white !important;
-}
-
-/* Modo claro */
-.navbar.light {
-    background-color: #f4f4f4 !important;
-    color: black !important;
-}
-
-/* Estilos de los enlaces en la navbar */
-.navbar-nav .nav-item .nav-link {
-    transition: color 0.3s ease;
-}
-
-/* Enlaces en modo oscuro */
-.navbar.dark .navbar-nav .nav-link {
-    color: var(--primary-color) !important;
-}
-
-.navbar.dark .navbar-nav .nav-link:hover {
-    color: var(--secondary-color) !important;
-}
-
-/* Enlaces en modo claro */
-.navbar.light .navbar-nav .nav-link {
-    color: var(--primary-color) !important;
-}
-
-.navbar.light .navbar-nav .nav-link:hover {
-    color: var(--secondary-color) !important;
-}
-
-.navbar-toggler {
-    border: none;
-    border-color: transparent;
-}
-
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,63,31, 1.0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-}
-
 .nav-link {
-    font-weight: 600;
+    font-size: 1.2rem;
+    font-weight: bold;
     text-transform: uppercase;
-    font-size: 1.4rem;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+nav.navbar {
+    background-color: var(--gradient-primary);
 }

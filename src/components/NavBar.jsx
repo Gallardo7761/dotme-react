@@ -1,29 +1,45 @@
-import { useTheme } from "../contexts/ThemeContext"
+import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import '../css/Navbar.css';
 
 const NavBar = ({ children }) => {
-    const { theme } = useTheme();
+  const navVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+  };
 
-    return (
-        <nav className={`navbar navbar-expand-sm sticky-top ${theme}`}>
-            <div className="container-fluid">
-                <button className="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" 
-                    data-bs-target="#collapse" aria-controls="collapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div id="collapse" className="navbar-collapse collapse">
-                    <ul className="navbar-nav"> 
-                        {children}
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    )
-}
+  return (
+    <nav className="navbar navbar-expand-lg sticky-top navbar-dark shadow-sm">
+      <div className="container">
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarContent"
+          aria-controls="navbarContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <motion.div
+          className="collapse navbar-collapse"
+          id="navbarContent"
+          initial="hidden"
+          animate="visible"
+          variants={navVariants}
+        >
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            {children}
+          </ul>
+        </motion.div>
+      </div>
+    </nav>
+  );
+};
 
 NavBar.propTypes = {
-    children: PropTypes.node.isRequired,
-}
+  children: PropTypes.node.isRequired,
+};
 
 export default NavBar;
