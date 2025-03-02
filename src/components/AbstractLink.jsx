@@ -7,7 +7,7 @@ const AbstractLink = ({ to, children, className = '', ...props }) => {
 
     if (isInternal && isRouterAvailable) {
         return (
-            <RouterLink className={className} to={`/gallardo7761` + to} {...props}>
+            <RouterLink className={className} to={to} {...props}>
                 {children}
             </RouterLink>
         );
