@@ -1,7 +1,6 @@
 /* src/css/Header.css */
 .header {
     padding: 1rem 0; /* py-4 */
-    text-align: center;
     background-color: #212529; /* bg-dark */
     color: #fff; /* text-white */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-lg */
@@ -18,3 +17,4 @@
     font-size: 1.25rem; /* lead */
     color: #6c757d; /* text-muted */
 }
+

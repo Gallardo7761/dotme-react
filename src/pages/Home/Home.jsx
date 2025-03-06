@@ -81,7 +81,7 @@ const InterestsSection = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <div className="text-center p-3 bg-white rounded shadow-sm">
+              <div className="text-center p-3 bg-white rounded shadow">
                 {interest}
               </div>
             </motion.div>

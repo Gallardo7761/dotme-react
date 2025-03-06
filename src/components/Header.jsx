@@ -6,13 +6,13 @@ import "../css/Header.css";
 const Header = ({ subtitle }) => {
   const names = useMemo(() => ["Jose", "Gallardo7761"], []);
   const [isJose, setIsJose] = useState(true);
-  const [text, setText] = useState("Hola, soy "); // Texto actual
-  const [animationState, setAnimationState] = useState("writing"); // Estados: "writing", "deleting", "waiting"
+  const [text, setText] = useState("Hola, soy ");
+  const [animationState, setAnimationState] = useState("writing");
 
   useEffect(() => {
     let timeout;
-    const baseText = "Hola, soy "; // Fijo, no se borra
-    const fullText = baseText + (isJose ? names[0] : names[1]); // Texto completo a mostrar
+    const baseText = "Hola, soy ";
+    const fullText = baseText + (isJose ? names[0] : names[1]);
 
     if (animationState === "writing") {
       if (text.length < fullText.length) {
@@ -20,7 +20,7 @@ const Header = ({ subtitle }) => {
           setText(fullText.slice(0, text.length + 1));
         }, 150);
       } else {
-        timeout = setTimeout(() => setAnimationState("deleting"), 3000); // Espera 2s antes de borrar
+        timeout = setTimeout(() => setAnimationState("deleting"), 3000);
       }
     } else if (animationState === "deleting") {
       if (text.length > baseText.length) {
@@ -29,18 +29,34 @@ const Header = ({ subtitle }) => {
         }, 100);
       } else {
         timeout = setTimeout(() => {
-          setIsJose((prev) => !prev); // Cambia el nombre
+          setIsJose((prev) => !prev);
           setAnimationState("writing");
-        }, 1000); // Espera 15s antes de escribir de nuevo
+        }, 1000);
       }
     }
 
     return () => clearTimeout(timeout);
   }, [text, animationState, isJose, names]); // -> Funciona !!!
 
+  const subtitleWithCode = (
+    <code>
+      #include &lt;stdio.h&gt;
+      <br />
+      int main() &#123;
+      <br />
+      &nbsp;&nbsp;printf(&quot;%s&quot;, &quot;{subtitle}&quot;);
+      <br />
+      &nbsp;&nbsp;return 0;
+      <br />
+      &#125;
+    </code>
+  );
+
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <header className="header">
-      <div className="container">
+      <div className="container d-flex flex-column align-items-center">
         <motion.h1
           className="header-title"
           initial={{ opacity: 0, y: -20 }}
@@ -49,13 +65,15 @@ const Header = ({ subtitle }) => {
         >
           {text}
         </motion.h1>
-        <motion.p
+        <motion.p id="subtitle"
           className="header-subtitle"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
+          onHoverStart={() => setIsHovered(true)}
+          onHoverEnd={() => setIsHovered(false)}
         >
-          {subtitle}
+          {isHovered ? subtitleWithCode : subtitle}
         </motion.p>
       </div>
     </header>

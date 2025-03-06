@@ -3,7 +3,7 @@ import AbstractLink from './AbstractLink';
 
 const Link = ({ to, children, isNavbar, className = '', ...props }) => {
     return (
-        <li className="nav-item">  
+        <li className="nav-item" style={{ listStyleType: 'none' }}>  
             <AbstractLink to={to} className={`${isNavbar ? 'nav-link' : ''} ${className}`} {...props}>
                 {children}
             </AbstractLink>
